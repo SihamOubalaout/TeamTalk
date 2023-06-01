@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 
 use App\Providers\RouteServiceProvider;
@@ -24,23 +26,21 @@ class ResetPasswordController extends Controller
 
     // Mettre à jour le mot de passe de l'utilisateur
     public function changePassword(Request $request)
-    {
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|string|min:8|confirmed',
-        ]);
+{
+    // Validate form
 
-        $user = Auth::user();
-
-        // Vérifier si le mot de passe actuel est valide
-        if (!Hash::check($request->current_password, $user->password)) {
-            return back()->withErrors(['current_password' => 'Le mot de passe actuel est incorrect.']);
-        }
-
-        // Mettre à jour le mot de passe
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-
-        return redirect()->route('home')->with('success', 'Votre mot de passe a été mis à jour avec succès.');
+    // Check if user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login');
     }
+
+    // Retrieve the authenticated user
+    $user = Auth::user();
+
+    // Update the password
+    $user->update(['password' => Hash::make($request->newpassword)]);
+
+    return redirect()->route('messages')->with('success', 'Votre mot de passe a été mis à jour avec succès.');
+}
+
 }

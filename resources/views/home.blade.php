@@ -12,9 +12,11 @@
     @endphp
 
     @if($user->isAdmin)
+    <div class="d-flex flex-row">
+
     <div class="container">
-        <div class="row my-5">
-            <div class="col-md-4">
+        <div class="row my-3">
+            <div class="col-md-8">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ \App\Models\User::count() }}</h3>
@@ -32,7 +34,7 @@
     </div>
     <div class="container">
         <div class="row my-5">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ \App\Models\Departement::count() }}</h3>
@@ -48,5 +50,24 @@
             </div>
         </div>
     </div>
+    </div>
     @endif
+    <div class="text-center">
+    <div class="container">
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <p>Boîte de messagerie</p>
+                </div>
+                <div class="pull-right">
+                    <a href="{{ url('/master') }}" class="btn btn-default btn-flat"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+</div>
+
+
 @endsection

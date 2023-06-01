@@ -333,6 +333,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+         [
+            
+            'text' => 'Chat',
+            'url'  => 'messages',
+            'icon' => 'fas fa-fw fa-comments', // Icône de chat
+        
+    ],
 
         ['header' => 'account_settings'],
         [
@@ -341,13 +348,8 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         
-        [
-            
-                'text' => 'Boîte de messagerie',
-                'url'  => 'master',
-                'icon' => 'fas fa-fw fa-envelope', // Icône de boîte de messagerie
-            
-        ],
+       
+       
         [
             'text' => 'change_password',
             'url'  => '/password/reset/{token}',

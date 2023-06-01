@@ -58,7 +58,7 @@ Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showChan
 
 
 // Route pour mettre à jour le mot de passe de l'utilisateur
-Route::post('/password/reset/{token}', [ResetPasswordController::class, 'changePassword'])->name('password.update');
+Route::post('/password/reset/{token}', [ResetPasswordController::class, 'changePassword'])->name('password.update')->middleware('web');
 
 
 Route::get('/messages', [MessagesController::class, 'index'])->name('messages');
