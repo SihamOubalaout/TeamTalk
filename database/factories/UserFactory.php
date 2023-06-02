@@ -17,6 +17,8 @@ class UserFactory extends Factory
             'nomEmp' => $this->faker->lastName(),
             'prenomEmp' => $this->faker->firstName(),
             'poste' => $this->faker->jobTitle(),
+            'telephone'=>$this->faker->phoneNumber(),
+            'adresse'=>$this->faker->address(),
             'email' => $this->faker->email(),
             'id_departement' => $departement->id_departement,
             'password' => $this->faker->password(),

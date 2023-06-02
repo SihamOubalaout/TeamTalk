@@ -30,6 +30,14 @@ Afficher Employe
                             <input type="text" disabled class="form-control rounded-0" name="poste" placeholder="Poste" value="{{ $user->poste}}" readonly>
                         </div>
                         <div class="form-group mb-3">
+                            <label for="telephone">Telephone</label>
+                            <input type="text" disabled class="form-control rounded-0" name="telephone" placeholder="Telephone" value="{{ $user->telephone}}" readonly>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" disabled class="form-control rounded-0" name="adresse" placeholder="Adresse" value="{{ $user->adresse}}" readonly>
+                        </div>
+                        <div class="form-group mb-3">
                             <label for="email">Email</label>
                             <input type="text"  disabled class="form-control rounded-0" name="email" placeholder="Email" value="{{ $user->email }}" readonly>
                         </div>

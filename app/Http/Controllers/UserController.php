@@ -24,6 +24,8 @@ class UserController extends Controller
         'PrenomEmp'=>$request->NomEmp,
         'poste'=>$request->poste,
         'email' => $request->email,
+        'telephone'=>$request->telephone,
+        'adresse'=>$request->adresse,
         'password' => Hash::make($request->NomEmp . '_2021'),
     ]);
 
@@ -38,6 +40,22 @@ class UserController extends Controller
   
         return view('users.edit', compact('user'));
     }
+    public function edit2()
+    {
+        $user = Auth::user();
+        return view('users.edit2', compact('user'));
+    }
+    
+    public function update2(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+    
+        $user->update($request->all());
+    
+        return redirect()->route('users.profile')->with('success', 'Profile updated successfully');
+    }
+    
+    
 
     public function update(Request $request, string $id)
     {

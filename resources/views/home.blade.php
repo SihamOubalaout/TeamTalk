@@ -6,6 +6,11 @@
     <h1>Dashboard</h1>
 @endsection
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     @php
         use Illuminate\Support\Facades\Auth;
         $user = Auth::user();
@@ -13,7 +18,6 @@
 
     @if($user->isAdmin)
     <div class="d-flex flex-row">
-
     <div class="container">
         <div class="row my-3">
             <div class="col-md-8">
@@ -71,3 +75,5 @@
 
 
 @endsection
+
+

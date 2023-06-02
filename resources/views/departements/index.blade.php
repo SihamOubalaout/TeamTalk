@@ -1,9 +1,12 @@
 @extends('adminlte::page')
+
 @section('plugins.Datatables', true)
 @section('title', 'LISTE DES DEPARTEMENTS')
+
 @section('content_header')
-    <h1>LISTE DES DEPARTEMENTS</h1>
+    <h1 class="text-center">LISTE DES DEPARTEMENTS</h1>
 @endsection
+
 @section('content')
 @php
     use App\Models\Departement;
@@ -16,7 +19,9 @@
             @foreach($departements as $departement)
                 <div class="col-md-4">
                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-header">{{ $departement['designation'] }}</div>
+                        <div class="card-header">
+                            <h4 class="text-center">{{ $departement['designation'] }}</h4>
+                        </div>
                         <div class="card-body">
                             <p>{{ $departement['description'] }}</p>
                         </div>
@@ -26,3 +31,4 @@
         </div>
     </div>
 @endsection
+

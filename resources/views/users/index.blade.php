@@ -4,16 +4,17 @@
 LISTE DES EMPLOYES
 @endsection
 @section('content_header')
-    <h1>LISTE DES EMPLOYES<h1>
 @endsection
 @section('content')
-<div class="container">
+<div class="card my-5" style="background-image: url('{{ asset('images/employes.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center; background-size: 100% 100%;">
+<div class="container" style="max-width: 910px; ">
     <div class="row">
         <div class="col-md-10 mx-auto">
+        
             <div class="card my-5">
-                <div class="card-header">
+                <div class="card-header" >
                    <div class="text-center font-weight-bold text-uppercase">
-                        <H4>Liste des Employes </H4>
+                   <h4 style="text-align: center; color: black; font-family: Montserrat, sans-serif;">LISTE DES EMPLOYES</h4>
                     </div> 
                 </div>
                 <hr />
@@ -22,7 +23,7 @@ LISTE DES EMPLOYES
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                <div class="card-body">
+                <div class="card-body" >
                     <table id="myTable" class="table table-bordered table-stripped">
                         <thead>
                             <tr>
@@ -83,3 +84,4 @@ LISTE DES EMPLOYES
         });
     </script>
 @endsection
+
