@@ -13,10 +13,9 @@
 
     @if($user->isAdmin)
     <div class="d-flex flex-row">
-
-    <div class="container">
-        <div class="row my-3">
-            <div class="col-md-8">
+       <div class="container">
+        <div class="row my-5">
+            <div class="col-md-12">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ \App\Models\User::count() }}</h3>
@@ -34,14 +33,32 @@
     </div>
     <div class="container">
         <div class="row my-5">
-            <div class="col-md-8">
+            <div class="col-md-12">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                    <h3>{{ \App\Models\Departement::count() }}</h3>
+                        <p>Annoces</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fas fa-bullhorn"></i>
+                   </div>
+                    <a href="{{ url('admin/users') }}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-12">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ \App\Models\Departement::count() }}</h3>
                         <p>Departement</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-tie"></i>
+                    <i class="fas fa-building"></i>
                     </div>
                     <a href="{{ url('admin/departements') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
@@ -51,10 +68,11 @@
         </div>
     </div>
     </div>
+    
     @endif
     <div class="text-center">
     <div class="container">
-    <div class="row my-5">
+    <div class="row my-3">
         <div class="col-md-4">
             <div class="small-box bg-info">
                 <div class="inner">

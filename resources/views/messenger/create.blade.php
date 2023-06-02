@@ -40,7 +40,7 @@
 
 
             <div class="form-group">
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="dest_user_id">
   <option selected>Select a recipiant</option>
     @forelse($users as $user)
       <option title="{{ $user->NomEmp }}" value="{{ $user->id }}">
