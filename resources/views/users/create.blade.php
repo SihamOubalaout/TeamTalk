@@ -36,6 +36,16 @@ Ajouter Un Nouveau Employe
                         </div>
                         <div class="form-group mb-3">
                             <div class="col">
+                                <input type="text" class="form-control" name="telephone" placeholder="Telephone">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="col">
+                                <input type="text" class="form-control" name="adresse" placeholder="Adresse">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="col">
                                 <input type="text" class="form-control" name="email" placeholder="Email">
                             </div>
                         </div>

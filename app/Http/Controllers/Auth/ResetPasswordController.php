@@ -36,11 +36,17 @@ class ResetPasswordController extends Controller
 
     // Retrieve the authenticated user
     $user = Auth::user();
+    $token = $request->input('token');
+
+
 
     // Update the password
-    $user->update(['password' => Hash::make($request->newpassword)]);
+    $user->update(['password' => Hash::make($request->password)]);
 
-    return redirect()->route('messages')->with('success', 'Votre mot de passe a été mis à jour avec succès.');
+    return redirect()->route('admin.dashboard')->with('success', 'Password updated successfully');
+
+
+
 }
 
 }

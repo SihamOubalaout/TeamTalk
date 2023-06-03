@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('NomEmp')->default('')->nullable;
             $table->string('PrenomEmp')->default('');
             $table->string('poste')->default('');
+            $table->string('telephone')->nullable();
+            $table->string('adresse')->nullable();
             $table->boolean('isAdmin')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/home', function () {
         return view('home');
-    });  
+    })->name('admin.dashboard');  
     //Route::resource('employes',UserController::class);
     Route::controller(UserController::class)->prefix('users')->group(function () {
         Route::get('', 'index')->name('users.index');
@@ -43,9 +43,12 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
  
 
-Route::get('/profile', function () {
-    return view('users.profile');
-});
+Route::view('/profile', 'users.profile')->name('users.profile');
+
+Route::get('/profile/edit', [UserController::class, 'edit2'])->name('users.edit2');
+Route::put('/profile/update/{id}', [UserController::class, 'update2'])->name('users.update2');
+
+
 
 Route::get('/master', function () {
     return view('layouts.master');

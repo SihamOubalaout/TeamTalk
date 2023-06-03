@@ -20,6 +20,8 @@ class User extends Authenticatable
         'NomEmp',
         'PrenomEmp',
         'poste',
+        'telephone',
+        'adresse',
         'email',
         'id_departement',
         'password',
