@@ -6,7 +6,6 @@ LISTE DES EMPLOYES
 @section('content_header')
 @endsection
 @section('content')
-<div class="card my-5" style="background-image: url('{{ asset('images/employes.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center; background-size: 100% 100%;">
 <div class="container" style="max-width: 910px; ">
     <div class="row">
         <div class="col-md-10 mx-auto">
@@ -67,7 +66,7 @@ LISTE DES EMPLOYES
                 </div>
         </div> 
     </div>
-</div>
+
 
 @endsection
 

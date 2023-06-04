@@ -97,17 +97,18 @@ class MessagesController extends Controller
 
         // Sender
         if (auth()->check()) {
+            
         Participant::create([
             'thread_id' => $thread->id,
             'user_id' => Auth::id(),
             'last_read' => new Carbon(),
-        ]);//
+        ]);
         Participant::create([
             'thread_id' => $thread->id,
             'user_id' => $input['dest_user_id'],
             'last_read' => new Carbon(),
         ]);
-
+        
     }
 
         // Recipients
