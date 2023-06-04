@@ -3,7 +3,6 @@
 Modifier Un Employe
 @endsection
 @section('content_header')
-    <h1>Modifier Un Employe<h1>
 @endsection
 @section('content')
 <div class="container">
@@ -13,7 +12,7 @@ Modifier Un Employe
             <div class="card my-5">
                 <div class="card-header">
                    <div class="text-center font-weight-bold text-uppercase">
-                        <H4>Modifier Un Employe</H4>
+                        <p class="heading">Modifier Un Employe</p>
                     </div>
                 </div> 
                 <div class="card-body">
@@ -48,11 +47,7 @@ Modifier Un Employe
                             <label for="id_departement">N° ID_Departement</label>
                             <input type="text"   class="form-control rounded-0" name="id_departement" placeholder="ID_Departement" value="{{ $user->id_departement }}">
                         </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="d-grid">
-                                <button class="btn btn-warning">Update</button>
+                            <button class="btn p-1" style="width: 90px;" id="button">Update</button>
                             </div>
                         </div>
                     </form>
@@ -63,3 +58,50 @@ Modifier Un Employe
 </div>
 @endsection
 
+@section('css')
+<style>
+    #button {
+    position: relative;
+    width: 100%;
+    border: 2px solid #8000ff;
+    background-color: #8000ff;
+    height: 40px;
+    color: white;
+    font-size: .10em;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    }
+
+    #button {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    border: 2px solid #8000ff;
+    background-color: #8000ff;
+    height: 40px;
+    color: white;
+    font-size: .9em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    }
+
+    #button:hover::after {
+    transform: translateX(600px);
+    transition-duration: .5s;
+    }
+    .heading {
+    font-size: 2.5em;
+    color: #2e2e2e;
+    font-weight: 700;
+    margin: 15px 0 30px 0;
+    }
+</style>
+@endsection

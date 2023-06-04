@@ -3,7 +3,6 @@
 Afficher Employe
 @endsection
 @section('content_header')
-    <h1>Afficher Employe<h1>
 @endsection
 @section('content')
 <div class="container">
@@ -13,7 +12,7 @@ Afficher Employe
             <div class="card my-5">
                 <div class="card-header">
                    <div class="text-center font-weight-bold text-uppercase">
-                        <H3>{{$user->NomEmp .' ' . $user->PrenomEmp}}</H3>
+                        <H3 class="heading">{{$user->NomEmp .' ' . $user->PrenomEmp}}</H3>
                     </div>
                 </div> 
                 <div class="card-body">
@@ -50,4 +49,15 @@ Afficher Employe
         </div> 
     </div>
 </div>
+@endsection
+@section('css')
+<style>
+      .heading {
+    font-size: 2.5em;
+    color: #2e2e2e;
+    font-weight: 700;
+    margin: 15px 0 30px 0;
+    }
+</style>
+    
 @endsection

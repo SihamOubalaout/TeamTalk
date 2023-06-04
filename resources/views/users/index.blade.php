@@ -6,15 +6,13 @@ LISTE DES EMPLOYES
 @section('content_header')
 @endsection
 @section('content')
-<div class="card my-5" style="background-image: url('{{ asset('images/employes.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center; background-size: 100% 100%;">
-<div class="container" style="max-width: 910px; ">
+<div class="container" style="max-width: 1050px; ">
     <div class="row">
-        <div class="col-md-10 mx-auto">
-        
+        <div class="col-md-10 mx-auto"> 
             <div class="card my-5">
                 <div class="card-header" >
                    <div class="text-center font-weight-bold text-uppercase">
-                   <h4 style="text-align: center; color: black; font-family: Montserrat, sans-serif;">LISTE DES EMPLOYES</h4>
+                   <p class="heading">LISTE DES EMPLOYES</p>
                     </div> 
                 </div>
                 <hr />
@@ -24,7 +22,7 @@ LISTE DES EMPLOYES
                     </div>
                 @endif
                 <div class="card-body" >
-                    <table id="myTable" class="table table-bordered table-stripped">
+                    <table id="myTable" class="table table-bordered table-stripped table-rounded">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -45,15 +43,20 @@ LISTE DES EMPLOYES
                                         <td class="align-middle">{{ $emp->poste}}</td> 
                                         <td class="align-middle">{{$emp->email}}</td> 
                                         <td class="align-middle">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('users.show', $emp->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                                <a href="{{ route('users.edit', $emp->id)}}" type="button" class="btn btn-warning">Edit</a>
-                                                <form action="{{ route('users.destroy', $emp->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger m-0">Delete</button>
-                                                </form>
-                                            </div>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="{{ route('users.show', $emp->id) }}" class="mr-0 " role="button">
+                                            <button class="btn p-1" style="width: 70px;" id="button">Details</button>
+                                        </a>
+                                        <a href="{{ route('users.edit', $emp->id)}}" class="mr-0" role="button">
+                                            <button class="btn p-1" style="width: 70px;" id="button">Edit</button>
+                                        </a>
+                                        <form action="{{ route('users.destroy', $emp->id) }}" method="POST" onsubmit="return confirm('Delete?')" class="mr-2">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn p-1"  style="width: 70px;" id="button">Delete</button>
+                                        </form>
+                                    </div>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -72,16 +75,80 @@ LISTE DES EMPLOYES
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function(){
-            $('#myTable').DataTable({
-                dom: 'Bfrtip',
-                buttons : [
-                    'copy','excel','csv','pdf','print','colvis'
-                ]
+<script>
+$(document).ready(function(){
+    $('#myTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdf',
+                customize: function(doc) {
+                    // Remove the sixth column
+                    doc.content[1].table.body.forEach(function(row) {
+                        row.splice(5, 1); // Remove the sixth column
+                    });
+                    doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                    doc.styles.table = {
+                        alignment: 'center',
+                        fontSize: 12
+                    };
+                    doc.defaultStyle.fontSize = 10;
 
-            });
-        });
-    </script>
+                }
+            },
+            'copy', 'excel', 'csv', 'print', 'colvis'
+        ]
+    });
+});
+</script>
+
 @endsection
+@section('css')
+<style>
+    #button {
+    position: relative;
+    width: 100%;
+    border: 2px solid #8000ff;
+    background-color: #8000ff;
+    height: 40px;
+    color: white;
+    font-size: .10em;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    }
+
+    #button {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    border: 2px solid #8000ff;
+    background-color: #8000ff;
+    height: 40px;
+    color: white;
+    font-size: .9em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    }
+
+    #button:hover::after {
+    transform: translateX(600px);
+    transition-duration: .5s;
+    }
+    .heading {
+    font-size: 2.5em;
+    color: #2e2e2e;
+    font-weight: 700;
+    margin: 15px 0 30px 0;
+    }
+</style>
+@endsection
+
 
