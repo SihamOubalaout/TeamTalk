@@ -48,6 +48,7 @@ Route::view('/profile', 'users.profile')->name('users.profile');
 Route::get('/profile/edit', [UserController::class, 'edit2'])->name('users.edit2');
 Route::put('/profile/update/{id}', [UserController::class, 'update2'])->name('users.update2');
 
+Route::view('/profiles', 'users.profiles')->name('users.profiles');
 
 
 Route::get('/master', function () {

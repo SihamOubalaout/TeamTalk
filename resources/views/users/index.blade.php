@@ -6,7 +6,11 @@ LISTE DES EMPLOYES
 @section('content_header')
 @endsection
 @section('content')
+<<<<<<< HEAD
 <div class="container" style="max-width: 1050px; ">
+=======
+<div class="container" style="max-width: 910px; ">
+>>>>>>> 035288661aab21a2ca733bf2a0c5b7e1c04a57ee
     <div class="row">
         <div class="col-md-10 mx-auto"> 
             <div class="card my-5">
@@ -70,7 +74,7 @@ LISTE DES EMPLOYES
                 </div>
         </div> 
     </div>
-</div>
+
 
 @endsection
 

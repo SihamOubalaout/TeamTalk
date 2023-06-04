@@ -23,13 +23,13 @@ class MessagesController extends Controller
     public function index()
     {
         // All threads, ignore deleted/archived participants
-        $threads = Thread::getAllLatest()->get();
+        // $threads = Thread::getAllLatest()->get();
 
         // All threads that user is participating in
-        // $threads = Thread::forUser(Auth::id())->latest('updated_at')->get();
+       $threads = Thread::forUser(Auth::id())->latest('updated_at')->get();
 
         // All threads that user is participating in, with new messages
-        // $threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
+      //$threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
 
         return view('messenger.index', compact('threads'));
     }
@@ -51,7 +51,7 @@ class MessagesController extends Controller
         }
 
         // show current user in list if not a current participant
-        // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
+         $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
 
         // don't show the current user in list
         $userId = Auth::id();
@@ -82,7 +82,7 @@ class MessagesController extends Controller
     public function store()
     {
         $input = Request::all();
-
+// debut transaction 
         $thread = Thread::create([
             'subject' => $input['subject'],
         ]);
@@ -97,18 +97,35 @@ class MessagesController extends Controller
 
         // Sender
         if (auth()->check()) {
+            
         Participant::create([
             'thread_id' => $thread->id,
             'user_id' => Auth::id(),
             'last_read' => new Carbon(),
         ]);
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => $input['dest_user_id'],
+            'last_read' => new Carbon(),
+        ]);
+        
     }
 
         // Recipients
         if (Request::has('recipients')) {
-            $thread->addParticipant($input['recipients']);
+            $recipients = $input['recipients'];
+            
+            foreach ($recipients as $recipient) {
+                $thread->addParticipant($recipient);
+                
+                Participant::create([
+                    'thread_id' => $thread->id,
+                    'user_id' => $recipient,
+                    'last_read' => Carbon::now(),
+                ]);
+            }
         }
-
+        
         return redirect()->route('messages');
     }
 
